@@ -18,28 +18,41 @@ import Foundation
 #endif
 
 public struct ServiceAccountCredentials : Codable {
-  let CredentialType : String
-  let ProjectId : String
-  let PrivateKeyId : String
-  let PrivateKey : String
-  public let ClientEmail : String
-  let ClientID : String
-  let AuthURI : String
-  let TokenURI : String
-  let AuthProviderX509CertURL : String
-  let ClientX509CertURL : String
-  enum CodingKeys: String, CodingKey {
-    case CredentialType = "type"
-    case ProjectId = "project_id"
-    case PrivateKeyId = "private_key_id"
-    case PrivateKey = "private_key"
-    case ClientEmail = "client_email"
-    case ClientID = "client_id"
-    case AuthURI = "auth_uri"
-    case TokenURI = "token_uri"
-    case AuthProviderX509CertURL = "auth_provider_x509_cert_url"
-    case ClientX509CertURL = "client_x509_cert_url"
-  }
+    public init(CredentialType: String, ProjectId: String, PrivateKeyId: String, PrivateKey: String, ClientEmail: String, ClientID: String, AuthURI: String, TokenURI: String, AuthProviderX509CertURL: String, ClientX509CertURL: String) {
+        self.CredentialType = CredentialType
+        self.ProjectId = ProjectId
+        self.PrivateKeyId = PrivateKeyId
+        self.PrivateKey = PrivateKey
+        self.ClientEmail = ClientEmail
+        self.ClientID = ClientID
+        self.AuthURI = AuthURI
+        self.TokenURI = TokenURI
+        self.AuthProviderX509CertURL = AuthProviderX509CertURL
+        self.ClientX509CertURL = ClientX509CertURL
+    }
+    
+    let CredentialType : String
+    let ProjectId : String
+    let PrivateKeyId : String
+    let PrivateKey : String
+    public let ClientEmail : String
+    let ClientID : String
+    let AuthURI : String
+    let TokenURI : String
+    let AuthProviderX509CertURL : String
+    let ClientX509CertURL : String
+    enum CodingKeys: String, CodingKey {
+        case CredentialType = "type"
+        case ProjectId = "project_id"
+        case PrivateKeyId = "private_key_id"
+        case PrivateKey = "private_key"
+        case ClientEmail = "client_email"
+        case ClientID = "client_id"
+        case AuthURI = "auth_uri"
+        case TokenURI = "token_uri"
+        case AuthProviderX509CertURL = "auth_provider_x509_cert_url"
+        case ClientX509CertURL = "client_x509_cert_url"
+    }
 }
 
 public class ServiceAccountTokenProvider : TokenProvider {
