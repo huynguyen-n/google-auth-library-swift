@@ -17,12 +17,12 @@ import Foundation
   import FoundationNetworking
 #endif
 
-struct ServiceAccountCredentials : Codable {
+public struct ServiceAccountCredentials : Codable {
   let CredentialType : String
   let ProjectId : String
   let PrivateKeyId : String
   let PrivateKey : String
-  let ClientEmail : String
+  public let ClientEmail : String
   let ClientID : String
   let AuthURI : String
   let TokenURI : String
