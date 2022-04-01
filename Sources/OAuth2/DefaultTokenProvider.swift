@@ -21,7 +21,15 @@ public class DefaultTokenProvider : TokenProvider {
   public var token: Token?
   private var tokenProvider : TokenProvider
   
-  public init?(scopes:[String]) {
+  public init?(scopes:[String], path: String? = nil) {
+    if let path = path {
+        let credentialsURL = URL(fileURLWithPath:path)
+        guard let provider = ServiceAccountTokenProvider(credentialsURL:credentialsURL, scopes:scopes) else {
+          return nil
+        }
+        tokenProvider = provider
+        return
+    }
     // if GOOGLE_APPLICATION_CREDENTIALS is set,
     // use it to get service account credentials.
     if let credentialsPath = ProcessInfo.processInfo.environment["GOOGLE_APPLICATION_CREDENTIALS"]  {
